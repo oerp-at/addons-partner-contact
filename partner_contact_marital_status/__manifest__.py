@@ -1,17 +1,16 @@
 # Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
 
-# noinspection PyStatementEffect
-# pylint: disable=missing-readme
 {
     "name": "Partner Contact Marital Status",
-    "version": "19.0.2.0.0",
+    "summary": "Marital status on the personal information page of contacts",
+    "version": "20.0.1.0.0",
     "category": "Sales/CRM",
-    "author": "Weboffice IT-Service und Marketing GmbH & Co KG",
+    "author": "Weboffice IT und Marketing GmbH & CoKG,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/partner-contact",
     "license": "AGPL-3",
     "depends": ["contacts", "partner_contact_personal_information_page"],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "data/res_partner_marital_status_data.xml",
         "views/res_partner_views.xml",
         "views/res_partner_marital_status_views.xml",
