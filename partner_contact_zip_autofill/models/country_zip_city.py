@@ -30,8 +30,13 @@ DOWNLOAD_TIMEOUT = 300
 # RTR table, ``csv`` for the German street list).
 _COUNTRY_CONFIG = {
     "AT": {"url": AT_URL, "format": "json"},
-    "DE": {"url": DE_URL, "format": "csv", "delimiter": ",", "data_start": 1,
-           "encoding": "utf-8"},
+    "DE": {
+        "url": DE_URL,
+        "format": "csv",
+        "delimiter": ",",
+        "data_start": 1,
+        "encoding": "utf-8",
+    },
 }
 
 # RTR "bundesland" short code -> Odoo base.state_at_<n> record.
@@ -127,9 +132,7 @@ class CountryZipCity(models.Model):
         country = self.env.ref("base.%s" % country_code.lower())
         rows = self._download_and_parse(country_code, cfg)
         created = self._replace_country_rows(country.id, rows)
-        _logger.info(
-            "%s ZIP directory import finished: %s rows", country_code, created
-        )
+        _logger.info("%s ZIP directory import finished: %s rows", country_code, created)
         return created
 
     def _download_and_parse(self, country_code, cfg):

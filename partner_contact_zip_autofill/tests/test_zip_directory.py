@@ -12,18 +12,43 @@ _MODULE = "odoo.addons.partner_contact_zip_autofill.models.country_zip_city"
 # RTR postal-code table (JSON). One row per (plz, bezirk); a postal code always
 # resolves to a single "ort". B -> Burgenland, St -> Steiermark, W -> Wien.
 AT_ROWS = [
-    {"plz": 7000, "ort": "Eisenstadt", "bundesland": "B",
-     "bezirk": "Eisenstadt(Stadt)", "gueltigbis": None},
-    {"plz": 8410, "ort": "Wildon", "bundesland": "St",
-     "bezirk": "Leibnitz", "gueltigbis": None},
-    {"plz": 1010, "ort": "Wien", "bundesland": "W",
-     "bezirk": "Wien  1.,Innere Stadt", "gueltigbis": None},
+    {
+        "plz": 7000,
+        "ort": "Eisenstadt",
+        "bundesland": "B",
+        "bezirk": "Eisenstadt(Stadt)",
+        "gueltigbis": None,
+    },
+    {
+        "plz": 8410,
+        "ort": "Wildon",
+        "bundesland": "St",
+        "bezirk": "Leibnitz",
+        "gueltigbis": None,
+    },
+    {
+        "plz": 1010,
+        "ort": "Wien",
+        "bundesland": "W",
+        "bezirk": "Wien  1.,Innere Stadt",
+        "gueltigbis": None,
+    },
     # Same code, second district row -> collapses into one (zip, city) entry.
-    {"plz": 1010, "ort": "Wien", "bundesland": "W",
-     "bezirk": "Wien (duplicate)", "gueltigbis": None},
+    {
+        "plz": 1010,
+        "ort": "Wien",
+        "bundesland": "W",
+        "bezirk": "Wien (duplicate)",
+        "gueltigbis": None,
+    },
     # Expired entry -> skipped.
-    {"plz": 9999, "ort": "Altort", "bundesland": "St",
-     "bezirk": "Irgendwo", "gueltigbis": "2000-01-01"},
+    {
+        "plz": 9999,
+        "ort": "Altort",
+        "bundesland": "St",
+        "bezirk": "Irgendwo",
+        "gueltigbis": "2000-01-01",
+    },
 ]
 
 # Name,PostalCode,Locality,RegionalKey,Borough,Suburb (comma-separated).

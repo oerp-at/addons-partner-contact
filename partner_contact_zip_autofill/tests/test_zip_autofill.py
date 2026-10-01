@@ -2,10 +2,11 @@
 
 from unittest.mock import patch
 
+from odoo.tests.common import TransactionCase
+
 from odoo.addons.partner_contact_zip_autofill.api.openplz_client import (
     OpenPlzApiError,
 )
-from odoo.tests.common import TransactionCase
 
 _CLIENT = "odoo.addons.partner_contact_zip_autofill.api.openplz_client"
 
@@ -43,25 +44,57 @@ class TestZipAutofill(TransactionCase):
                 {"zip": "9999", "city": "StadtA", "state_id": cls.state_n.id},
                 {"zip": "9999", "city": "StadtB", "state_id": cls.state_n.id},
                 # -- Germany (5-digit) ------------------------------------
-                {"zip": "10115", "city": "Berlin",
-                 "municipality_code": "11000000", "state_id": cls.state_be.id},
-                {"zip": "80331", "city": "München",
-                 "municipality_code": "09162000", "state_id": cls.state_by.id},
+                {
+                    "zip": "10115",
+                    "city": "Berlin",
+                    "municipality_code": "11000000",
+                    "state_id": cls.state_be.id,
+                },
+                {
+                    "zip": "80331",
+                    "city": "München",
+                    "municipality_code": "09162000",
+                    "state_id": cls.state_by.id,
+                },
                 # Ambiguous 99999: Alt (Thüringen, 2 rows) vs Neu (BW, 1 row).
-                {"zip": "99999", "city": "Alt",
-                 "municipality_code": "16051000", "state_id": cls.state_th.id},
-                {"zip": "99999", "city": "Alt",
-                 "municipality_code": "16052000", "state_id": cls.state_th.id},
-                {"zip": "99999", "city": "Neu",
-                 "municipality_code": "08111000", "state_id": cls.state_bw.id},
+                {
+                    "zip": "99999",
+                    "city": "Alt",
+                    "municipality_code": "16051000",
+                    "state_id": cls.state_th.id,
+                },
+                {
+                    "zip": "99999",
+                    "city": "Alt",
+                    "municipality_code": "16052000",
+                    "state_id": cls.state_th.id,
+                },
+                {
+                    "zip": "99999",
+                    "city": "Neu",
+                    "municipality_code": "08111000",
+                    "state_id": cls.state_bw.id,
+                },
                 # Shared code where the full-text search returns two *different*
                 # streets; only "Am Dorfplatz" belongs to Riesa.
-                {"zip": "01594", "city": "Hirschstein",
-                 "municipality_code": "14627220", "state_id": cls.state_sn.id},
-                {"zip": "01594", "city": "Riesa",
-                 "municipality_code": "14627230", "state_id": cls.state_sn.id},
-                {"zip": "01594", "city": "Stauchitz",
-                 "municipality_code": "14627260", "state_id": cls.state_sn.id},
+                {
+                    "zip": "01594",
+                    "city": "Hirschstein",
+                    "municipality_code": "14627220",
+                    "state_id": cls.state_sn.id,
+                },
+                {
+                    "zip": "01594",
+                    "city": "Riesa",
+                    "municipality_code": "14627230",
+                    "state_id": cls.state_sn.id,
+                },
+                {
+                    "zip": "01594",
+                    "city": "Stauchitz",
+                    "municipality_code": "14627260",
+                    "state_id": cls.state_sn.id,
+                },
             ]
         )
 
@@ -141,12 +174,20 @@ class TestZipAutofill(TransactionCase):
         # Full-text search returns two *different* streets; only "Am Dorfplatz"
         # belongs to Riesa, so the entered street must pin it down.
         result = [
-            {"name": "Am Dorfplatz", "postalCode": "01594", "locality": "Riesa",
-             "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
-             "federalState": {"key": "14", "name": "Sachsen"}},
-            {"name": "Dorfplatz", "postalCode": "01594", "locality": "Stauchitz",
-             "municipality": {"key": "14627260", "name": "Stauchitz"},
-             "federalState": {"key": "14", "name": "Sachsen"}},
+            {
+                "name": "Am Dorfplatz",
+                "postalCode": "01594",
+                "locality": "Riesa",
+                "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
+                "federalState": {"key": "14", "name": "Sachsen"},
+            },
+            {
+                "name": "Dorfplatz",
+                "postalCode": "01594",
+                "locality": "Stauchitz",
+                "municipality": {"key": "14627260", "name": "Stauchitz"},
+                "federalState": {"key": "14", "name": "Sachsen"},
+            },
         ]
         partner, mock = self._fill("01594", "Am Dorfplatz 22", api=result)
         self.assertEqual(partner.city, "Riesa")
@@ -157,12 +198,20 @@ class TestZipAutofill(TransactionCase):
         # Both hits already point at Riesa (different streets, same city), so it
         # resolves even though neither name equals the entered street.
         result = [
-            {"name": "Hauptstraße", "postalCode": "01594", "locality": "Riesa",
-             "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
-             "federalState": {"key": "14", "name": "Sachsen"}},
-            {"name": "Bahnhofstraße", "postalCode": "01594", "locality": "Riesa",
-             "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
-             "federalState": {"key": "14", "name": "Sachsen"}},
+            {
+                "name": "Hauptstraße",
+                "postalCode": "01594",
+                "locality": "Riesa",
+                "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
+                "federalState": {"key": "14", "name": "Sachsen"},
+            },
+            {
+                "name": "Bahnhofstraße",
+                "postalCode": "01594",
+                "locality": "Riesa",
+                "municipality": {"key": "14627230", "name": "Riesa, Stadt"},
+                "federalState": {"key": "14", "name": "Sachsen"},
+            },
         ]
         partner, _mock = self._fill("01594", "Irgendeinweg 1", api=result)
         self.assertEqual(partner.city, "Riesa")
@@ -174,9 +223,7 @@ class TestZipAutofill(TransactionCase):
         mock.assert_called_once()
 
     def test_de_ambiguous_api_error_falls_back(self):
-        partner, _mock = self._fill(
-            "99999", "Musterweg 2", api=OpenPlzApiError()
-        )
+        partner, _mock = self._fill("99999", "Musterweg 2", api=OpenPlzApiError())
         self.assertEqual(partner.city, "Alt")
         self.assertEqual(partner.state_id, self.state_th)
 
