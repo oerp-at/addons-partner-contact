@@ -2,11 +2,11 @@
 
 {
     "name": "Partner Date of Death",
-    "summary": "Adds a Date of Death field on the OCA Personal Information page of contacts and computes age using OCA birthdate",
-    "version": "19.0.1.0.1",
+    "summary": "Date of death on contacts, age is computed up to the death",
+    "version": "20.0.1.0.0",
     "category": "Customer Relationship Management",
     "license": "AGPL-3",
-    "author": "Weboffice IT und Marketing GmbH & CoKG",
+    "author": "Weboffice IT und Marketing GmbH & CoKG,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/partner-contact",
     "depends": [
         "contacts",

@@ -29,8 +29,12 @@ class ResPartner(models.Model):
 
     @api.depends("deathdate")
     def _compute_age(self):
-        super()._compute_age()
+        result = super()._compute_age()
         for rec in self:
-            if rec.birthdate_date and rec.deathdate:
-                if rec.deathdate >= rec.birthdate_date:
-                    rec.age = relativedelta(rec.deathdate, rec.birthdate_date).years
+            if (
+                rec.birthdate_date
+                and rec.deathdate
+                and rec.deathdate >= rec.birthdate_date
+            ):
+                rec.age = relativedelta(rec.deathdate, rec.birthdate_date).years
+        return result
