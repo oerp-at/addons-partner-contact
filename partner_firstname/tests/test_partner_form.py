@@ -117,4 +117,4 @@ class PartnerContactCase(TransactionCase):
 
         self.assertEqual(partner_form.lastname, lastname)
         self.assertEqual(partner_form.firstname, firstname)
-        self.assertEqual(partner_form.name, " ".join((firstname, lastname)))
+        self.assertEqual(partner_form.name, f"{firstname} {lastname}")

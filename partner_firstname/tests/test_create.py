@@ -9,7 +9,7 @@ from odoo.tests import TransactionCase
 class PersonCase(TransactionCase):
     """Test ``res.partner`` when it is a person."""
 
-    context = {"default_is_company": False}
+    context = {"default_is_company": False}  # noqa: RUF012
     model = "res.partner"
 
     def setUp(self):

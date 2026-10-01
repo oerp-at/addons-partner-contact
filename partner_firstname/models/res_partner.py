@@ -14,7 +14,7 @@ class ResPartner(models.Model):
     """Adds last name and first name; name becomes a stored function field."""
 
     _name = "res.partner"
-    _inherit = ["res.partner", "firstname.mixin"]
+    _inherit = ["res.partner", "firstname.mixin"]  # noqa: RUF012
 
     firstname = fields.Char("First name", index=True)
 
@@ -30,7 +30,7 @@ class ResPartner(models.Model):
 
     # @api.depends(lambda self: self._get_fields_depend_firstname_lastname_required())
     def _compute_firstname_lastname_required(self):
-        for partner in self.filtered(lambda x: x.is_company or not x.type == "contact"):
+        for partner in self.filtered(lambda x: x.is_company or x.type != "contact"):
             partner.firstname_required = False
             partner.lastname_required = False
 
