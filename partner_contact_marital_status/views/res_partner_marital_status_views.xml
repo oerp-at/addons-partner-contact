@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG -->
 <odoo>
     <record id="res_partner_marital_status_view_list" model="ir.ui.view">
@@ -6,7 +6,7 @@
         <field name="model">res.partner.marital.status</field>
         <field name="arch" type="xml">
             <list string="Marital Status" editable="bottom">
-                <field name="name"/>
+                <field name="name" />
             </list>
         </field>
     </record>
