@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG -->
+<odoo>
+    <record id="res_partner_marital_status_view_list" model="ir.ui.view">
+        <field name="name">res.partner.marital.status.list</field>
+        <field name="model">res.partner.marital.status</field>
+        <field name="arch" type="xml">
+            <list string="Marital Status" editable="bottom">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_res_partner_marital_status" model="ir.actions.act_window">
+        <field name="name">Marital Status</field>
+        <field name="res_model">res.partner.marital.status</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem
+        id="menu_partner_marital_status"
+        action="partner_contact_marital_status.action_res_partner_marital_status"
+        name="Marital Status"
+        parent="contacts.res_partner_menu_config"
+        sequence="4"
+    />
+</odoo>
