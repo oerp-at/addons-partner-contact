@@ -113,7 +113,7 @@ Credits
 Authors
 -------
 
-* Weboffice IT-Service und Marketing GmbH & Co KG
+* Weboffice IT und Marketing GmbH & CoKG
 
 Contributors
 ------------

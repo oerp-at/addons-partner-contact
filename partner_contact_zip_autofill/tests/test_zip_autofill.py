@@ -27,8 +27,8 @@ class TestZipAutofill(TransactionCase):
         cls.state_th = cls.env.ref("base.state_de_th")
         cls.state_sn = cls.env.ref("base.state_de_sn")
         params = cls.env["ir.config_parameter"]
-        params.set_param("partner_contact_zip_autofill.at_enabled", "True")
-        params.set_param("partner_contact_zip_autofill.de_enabled", "True")
+        params.set_bool("partner_contact_zip_autofill.at_enabled", True)
+        params.set_bool("partner_contact_zip_autofill.de_enabled", True)
         # Start from an empty directory so the seeded rows are the only matches,
         # independent of any real data already imported (rolled back on teardown).
         cls.env.cr.execute("DELETE FROM country_zip_city")
@@ -236,8 +236,8 @@ class TestZipAutofill(TransactionCase):
     # -- Guard rails ------------------------------------------------------
 
     def test_at_disabled_does_nothing(self):
-        self.env["ir.config_parameter"].set_param(
-            "partner_contact_zip_autofill.at_enabled", "False"
+        self.env["ir.config_parameter"].set_bool(
+            "partner_contact_zip_autofill.at_enabled", False
         )
         try:
             partner, _mock = self._fill("1010", "Rotenturmstraße 11")
@@ -245,21 +245,21 @@ class TestZipAutofill(TransactionCase):
             self.assertFalse(partner.city)
             self.assertFalse(partner.state_id)
         finally:
-            self.env["ir.config_parameter"].set_param(
-                "partner_contact_zip_autofill.at_enabled", "True"
+            self.env["ir.config_parameter"].set_bool(
+                "partner_contact_zip_autofill.at_enabled", True
             )
 
     def test_de_disabled_does_nothing(self):
-        self.env["ir.config_parameter"].set_param(
-            "partner_contact_zip_autofill.de_enabled", "False"
+        self.env["ir.config_parameter"].set_bool(
+            "partner_contact_zip_autofill.de_enabled", False
         )
         try:
             partner, _mock = self._fill("10115", "Invalidenstraße 12")
             self.assertFalse(partner.country_id)
             self.assertFalse(partner.city)
         finally:
-            self.env["ir.config_parameter"].set_param(
-                "partner_contact_zip_autofill.de_enabled", "True"
+            self.env["ir.config_parameter"].set_bool(
+                "partner_contact_zip_autofill.de_enabled", True
             )
 
     def test_unknown_zip_does_nothing(self):

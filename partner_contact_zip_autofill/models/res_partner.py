@@ -31,7 +31,7 @@ class ResPartner(models.Model):
 
     def _zip_autofill_enabled(self, param):
         """Return whether the address autofill is switched on for ``param``."""
-        return self.env["ir.config_parameter"].sudo().get_param(param) == "True"
+        return self.env["ir.config_parameter"].sudo().get_bool(param)
 
     def _zip_autofill_apply(
         self, zip_value, street_value=False, *, city_fname, state_fname, country_fname
