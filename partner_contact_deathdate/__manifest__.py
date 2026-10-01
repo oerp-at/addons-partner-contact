@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
 
 {
@@ -8,11 +7,11 @@
     "category": "Customer Relationship Management",
     "license": "AGPL-3",
     "author": "Weboffice IT und Marketing GmbH & CoKG",
-    "website": "https://weboffice.at",
+    "website": "https://github.com/OCA/partner-contact",
     "depends": [
         "contacts",
         "partner_contact_personal_information_page",
-        "partner_contact_birthdate"
+        "partner_contact_birthdate",
     ],
     "data": [
         "views/res_partner_view.xml",
