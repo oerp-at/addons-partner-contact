@@ -1,0 +1,98 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_contact_marital_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-19 16:54+0000\n"
+"PO-Revision-Date: 2026-02-19 16:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__active
+msgid "Active"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.model,name:partner_contact_marital_status.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: partner_contact_marital_status
+#: model:ir.model,website_form_label:partner_contact_marital_status.model_res_partner
+msgid "Create a Customer"
+msgstr "Kunden erstellen"
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner__display_name
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: partner_contact_marital_status
+#: model:res.partner.marital.status,name:partner_contact_marital_status.res_partner_marital_status_divorced
+msgid "Divorced"
+msgstr "Geschieden"
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner__id
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__id
+msgid "ID"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: partner_contact_marital_status
+#: model:ir.actions.act_window,name:partner_contact_marital_status.action_res_partner_marital_status
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner__marital_status_id
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_partner_marital_status__name
+#: model:ir.model.fields,field_description:partner_contact_marital_status.field_res_users__marital_status_id
+#: model:ir.ui.menu,name:partner_contact_marital_status.menu_partner_marital_status
+#: model_terms:ir.ui.view,arch_db:partner_contact_marital_status.res_partner_marital_status_view_list
+msgid "Marital Status"
+msgstr "Familienstand"
+
+#. module: partner_contact_marital_status
+#: model:res.partner.marital.status,name:partner_contact_marital_status.res_partner_marital_status_married
+msgid "Married"
+msgstr "Verheiratet"
+
+#. module: partner_contact_marital_status
+#: model:ir.model,name:partner_contact_marital_status.model_res_partner_marital_status
+msgid "Partner Marital Status"
+msgstr "Partner Familienstand"
+
+#. module: partner_contact_marital_status
+#: model:res.partner.marital.status,name:partner_contact_marital_status.res_partner_marital_status_single
+msgid "Single"
+msgstr "Ledig"
+
+#. module: partner_contact_marital_status
+#: model:res.partner.marital.status,name:partner_contact_marital_status.res_partner_marital_status_widowed
+msgid "Widowed"
+msgstr "Verwitwet"
