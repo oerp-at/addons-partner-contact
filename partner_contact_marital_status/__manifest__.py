@@ -8,7 +8,7 @@
     "category": "Sales/CRM",
     "author": "Weboffice IT-Service und Marketing GmbH & Co KG",
     "website": "https://github.com/OCA/partner-contact",
-    "license": "OPL-1",
+    "license": "AGPL-3",
     "depends": ["contacts", "partner_contact_personal_information_page"],
     "data": [
         "security/ir.model.access.csv",
