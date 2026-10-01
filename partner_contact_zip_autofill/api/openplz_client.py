@@ -22,9 +22,8 @@ def normalize_plz(api_code, postal_code):
     if api_code == "de":
         if len(pc) == 5 and pc.isdigit():
             return pc
-    elif api_code in ("at", "ch", "li"):
-        if len(pc) == 4 and pc.isdigit():
-            return pc
+    elif api_code in ("at", "ch", "li") and len(pc) == 4 and pc.isdigit():
+        return pc
     return ""
 
 

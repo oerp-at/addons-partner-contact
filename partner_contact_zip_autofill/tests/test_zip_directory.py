@@ -90,7 +90,7 @@ class TestZipDirectory(TransactionCase):
         cls.City.invalidate_model()
 
     def _import(self, country_code):
-        with patch("%s.requests.get" % _MODULE, side_effect=_fake_get):
+        with patch(f"{_MODULE}.requests.get", side_effect=_fake_get):
             return self.City._import_zip_directory(country_code)
 
     def test_at_import_creates_distinct_city_rows(self):
@@ -149,7 +149,9 @@ class TestZipDirectory(TransactionCase):
         def _boom(*args, **kwargs):
             raise requests.exceptions.ConnectionError("down")
 
-        with self.assertRaises(requests.exceptions.ConnectionError):
-            with patch("%s.requests.get" % _MODULE, side_effect=_boom):
-                self.City._import_zip_directory("AT")
+        with (
+            self.assertRaises(requests.exceptions.ConnectionError),
+            patch(f"{_MODULE}.requests.get", side_effect=_boom),
+        ):
+            self.City._import_zip_directory("AT")
         self.assertEqual(self.City.search_count([]), 0)

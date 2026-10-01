@@ -118,7 +118,7 @@ class CountryZipCity(models.Model):
             raise UserError(
                 self.env._("Unsupported ZIP directory country %s.", country_code)
             )
-        lock_name = "czc_import_%s" % country_code
+        lock_name = f"czc_import_{country_code}"
         self.env.cr.execute(
             "SELECT pg_try_advisory_xact_lock(hashtext(%s)::bigint)", (lock_name,)
         )
@@ -129,7 +129,7 @@ class CountryZipCity(models.Model):
                 )
             )
         cfg = _COUNTRY_CONFIG[country_code]
-        country = self.env.ref("base.%s" % country_code.lower())
+        country = self.env.ref(f"base.{country_code.lower()}")
         rows = self._download_and_parse(country_code, cfg)
         created = self._replace_country_rows(country.id, rows)
         _logger.info("%s ZIP directory import finished: %s rows", country_code, created)

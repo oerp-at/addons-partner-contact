@@ -104,7 +104,7 @@ class TestZipAutofill(TransactionCase):
         ``api`` may be a list of result rows, or an exception instance to raise.
         Returns the partner and the patched mock (to assert call behaviour).
         """
-        with patch("%s.fetch_fulltext" % _CLIENT) as mock:
+        with patch(f"{_CLIENT}.fetch_fulltext") as mock:
             if isinstance(api, Exception):
                 mock.side_effect = api
             else:

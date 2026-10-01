@@ -53,9 +53,7 @@ class ResPartner(models.Model):
         country_code, param, api_code = dispatch
         if not self._zip_autofill_enabled(param):
             return
-        country = self.env.ref(
-            "base.%s" % country_code.lower(), raise_if_not_found=False
-        )
+        country = self.env.ref(f"base.{country_code.lower()}", raise_if_not_found=False)
         if not country:
             return
         rows = self.env["country.zip.city"].search(
@@ -91,9 +89,7 @@ class ResPartner(models.Model):
         """
         trimmed = strip_house_number(street_norm) or street_norm
         try:
-            results = openplz_client.fetch_fulltext(
-                api_code, "%s %s" % (trimmed, zip_norm)
-            )
+            results = openplz_client.fetch_fulltext(api_code, f"{trimmed} {zip_norm}")
         except openplz_client.OpenPlzApiError:
             return rows.browse()
         # Only ever trust hits for the exact postal code that was entered, so a
@@ -165,7 +161,7 @@ class ResPartner(models.Model):
         if not counter:
             return False
         top = max(counter.values())
-        return sorted(value for value, count in counter.items() if count == top)[0]
+        return min(value for value, count in counter.items() if count == top)
 
     def _zip_autofill_dominant_state(self, rows):
         """Pick the state covering the most rows (lowest id on a tie)."""
@@ -173,7 +169,7 @@ class ResPartner(models.Model):
         if not counter:
             return self.env["res.country.state"].browse()
         top = max(counter.values())
-        state_id = sorted(sid for sid, count in counter.items() if count == top)[0]
+        state_id = min(sid for sid, count in counter.items() if count == top)
         return self.env["res.country.state"].browse(state_id)
 
     @api.onchange("zip", "street")
