@@ -23,7 +23,8 @@ full name is kept in `lastname`.
 - A partner is split only if it is a person (`not is_company`) and `type == 'contact'`.
 - At least one of firstname/lastname must be set, otherwise `EmptyNamesError`.
 - `create()` decides company vs. person from the vals via `_is_company_from_vals()`:
-  explicit `is_company`, else a virtual record (`self.new`) with `vat`/`parent_id`.
+  explicit `is_company`, then `company_type` (toggle restored by
+  `partner_company_manual`), else a virtual record (`self.new`) with `vat`/`parent_id`.
 
 ## Pitfalls
 
