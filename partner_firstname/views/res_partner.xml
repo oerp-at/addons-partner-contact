@@ -4,17 +4,11 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_simple_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@id='individual']" position="attributes">
-                <attribute name="invisible">is_company</attribute>
+            <xpath expr="//field[@id='contact']" position="attributes">
                 <attribute name="readonly">not is_company</attribute>
                 <attribute name="required">type == 'contact' and is_company</attribute>
             </xpath>
-            <xpath expr="//field[@id='company']" position="attributes">
-                <attribute name="invisible">is_company == False</attribute>
-                <attribute name="readonly">not is_company</attribute>
-                <attribute name="required">type == 'contact' and is_company</attribute>
-            </xpath>
-            <xpath expr="//h1//field[@id='company']/.." position="before">
+            <xpath expr="//h1//field[@id='contact']/.." position="before">
                 <group invisible="is_company">
                     <field
                         invisible="not form_has_lastname_first"
@@ -35,13 +29,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//h1//field[last()]" position="attributes">
-                <attribute name="invisible">is_company</attribute>
-                <attribute name="readonly">not is_company</attribute>
-                <attribute name="required">type == 'contact' and is_company</attribute>
-            </xpath>
-            <xpath expr="//h1//field" position="attributes">
-                <attribute name="invisible">not is_company</attribute>
+            <xpath expr="//h1//field[@name='name']" position="attributes">
                 <attribute name="readonly">not is_company</attribute>
                 <attribute name="required">type == 'contact' and is_company</attribute>
             </xpath>

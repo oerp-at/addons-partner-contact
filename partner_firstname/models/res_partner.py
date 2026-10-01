@@ -59,7 +59,7 @@ class ResPartner(models.Model):
         created_partners = self.browse()
         for vals in vals_list:
             partner_context = dict(self.env.context)
-            is_company = vals.get("company_type") == "company"
+            is_company = self._is_company_from_vals(vals)
             if not is_company and self.name_fields_in_vals(vals) and "name" in vals:
                 del vals["name"]
                 partner_context.pop("default_name", None)
@@ -86,6 +86,15 @@ class ResPartner(models.Model):
                 ResPartner, self.with_context(partner_context)
             ).create([vals])
         return created_partners
+
+    @api.model
+    def _is_company_from_vals(self, vals):
+        """Since 20.0 there is no company_type anymore: is_company is computed
+        (own commercial entity with a VAT, refinable by localizations)."""
+        if "is_company" in vals:
+            return bool(vals["is_company"])
+        new_vals = {key: vals[key] for key in ("vat", "parent_id") if key in vals}
+        return bool(new_vals) and self.new(new_vals).is_company
 
     def get_extra_default_copy_values(self):
         """Method to add '(copy)' suffix to lastname or firstname, depending on name
