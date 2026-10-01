@@ -93,6 +93,8 @@ class ResPartner(models.Model):
         (own commercial entity with a VAT, refinable by localizations)."""
         if "is_company" in vals:
             return bool(vals["is_company"])
+        if "company_type" in vals:  # e.g. restored by partner_company_manual
+            return vals["company_type"] == "company"
         new_vals = {key: vals[key] for key in ("vat", "parent_id") if key in vals}
         return bool(new_vals) and self.new(new_vals).is_company
 
