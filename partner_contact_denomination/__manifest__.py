@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
 
 # noinspection PyStatementEffect
@@ -10,7 +9,7 @@
     "category": "Sales/CRM",
     "license": "AGPL-3",
     "author": "Weboffice IT und Marketing GmbH & CoKG, Odoo Community Association (OCA)",
-    "website": "https://weboffice.at",
+    "website": "https://github.com/OCA/partner-contact",
     "depends": [
         "contacts",
         "partner_contact_personal_information_page",
@@ -23,5 +22,4 @@
     ],
     "installable": True,
     "application": False,
-
 }

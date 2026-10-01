@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG -->
 <odoo>
     <record id="view_partner_form_inherit" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.partner_contact_denomination</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
+        <field
+            name="inherit_id"
+            ref="partner_contact_personal_information_page.personal_information"
+        />
         <field name="arch" type="xml">
-            <xpath expr="//page[contains(@name, 'personal')][1]//group[1]" position="inside">
-                <field name="denomination_id"/>
+            <xpath
+                expr="//page[contains(@name, 'personal')][1]//group[1]"
+                position="inside"
+            >
+                <field name="denomination_id" />
             </xpath>
         </field>
     </record>

@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
-#Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
+# Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class ResPartner(models.Model):
@@ -9,5 +8,5 @@ class ResPartner(models.Model):
 
     denomination_id = fields.Many2one(
         "res.partner.denomination",
-            string="Denomination",
-        )
+        string="Denomination",
+    )

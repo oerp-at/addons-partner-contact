@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 # Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class ResPartnerDenomination(models.Model):
