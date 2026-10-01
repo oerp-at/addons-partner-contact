@@ -1,0 +1,212 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_contact_zip_autofill
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-21 08:31+0000\n"
+"PO-Revision-Date: 2026-07-21 08:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_contact_zip_autofill
+#. odoo-python
+#: code:addons/oca_partner-contact/partner_contact_zip_autofill/models/country_zip_city.py:0
+#: code:addons/partner_contact_zip_autofill/models/country_zip_city.py:0
+msgid "A %s ZIP directory import is already running."
+msgstr "Ein %s-PLZ-Verzeichnisimport läuft bereits."
+
+#. module: partner_contact_zip_autofill
+#. odoo-python
+#: code:addons/oca_partner-contact/partner_contact_zip_autofill/models/res_config_settings.py:0
+#: code:addons/partner_contact_zip_autofill/models/res_config_settings.py:0
+msgid "Address Autofill"
+msgstr "Adress-Autovervollständigung"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_config_settings__at_address_autofill_enabled
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid "Address Autofill (AT)"
+msgstr "Adress-Autovervollständigung (AT)"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_config_settings__de_address_autofill_enabled
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid "Address Autofill (DE)"
+msgstr "Adress-Autovervollständigung (DE)"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__city
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.country_zip_city_view_search
+msgid "City"
+msgstr "Stadt"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model,name:partner_contact_zip_autofill.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model,name:partner_contact_zip_autofill.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__country_id
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.country_zip_city_view_search
+msgid "Country"
+msgstr "Land"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model,name:partner_contact_zip_autofill.model_country_zip_city
+msgid "Country ZIP City"
+msgstr "Land PLZ Stadt"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model,website_form_label:partner_contact_zip_autofill.model_res_partner
+msgid "Create a Customer"
+msgstr "Kunden erstellen"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,help:partner_contact_zip_autofill.field_country_zip_city__city
+msgid ""
+"Delivery town used for autofill (Bestimmungsort for AT, Locality for DE)."
+msgstr ""
+"Zustellort, der für die Autovervollständigung verwendet wird (Bestimmungsort"
+" für AT, Locality für DE)."
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__display_name
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,help:partner_contact_zip_autofill.field_res_config_settings__at_address_autofill_enabled
+msgid ""
+"Fill country, city and state on contacts from the Austrian ZIP directory "
+"(RTR / Austrian Post) when a 4-digit postal code is entered."
+msgstr ""
+"Füllt Land, Stadt und Bundesland bei Kontakten aus dem österreichischen "
+"PLZ-Verzeichnis (RTR / Österreichische Post), wenn eine 4-stellige "
+"Postleitzahl eingegeben wird."
+
+#. module: partner_contact_zip_autofill
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid ""
+"Fill country, city and state on contacts from the Austrian ZIP directory."
+msgstr ""
+"Füllt Land, Stadt und Bundesland bei Kontakten aus dem österreichischen "
+"PLZ-Verzeichnis."
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,help:partner_contact_zip_autofill.field_res_config_settings__de_address_autofill_enabled
+msgid ""
+"Fill country, city and state on contacts from the German ZIP directory "
+"(OpenStreetMap) when a 5-digit postal code is entered."
+msgstr ""
+"Füllt Land, Stadt und Bundesland bei Kontakten aus dem deutschen "
+"PLZ-Verzeichnis (OpenStreetMap), wenn eine 5-stellige Postleitzahl "
+"eingegeben wird."
+
+#. module: partner_contact_zip_autofill
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid ""
+"Fill country, city and state on contacts from the German ZIP directory."
+msgstr ""
+"Füllt Land, Stadt und Bundesland bei Kontakten aus dem deutschen "
+"PLZ-Verzeichnis."
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__id
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_config_settings__id
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: partner_contact_zip_autofill
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid "Import ZIP Directory (AT)"
+msgstr "PLZ-Verzeichnis importieren (AT)"
+
+#. module: partner_contact_zip_autofill
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.res_config_settings_view_form
+msgid "Import ZIP Directory (DE)"
+msgstr "PLZ-Verzeichnis importieren (DE)"
+
+#. module: partner_contact_zip_autofill
+#. odoo-python
+#: code:addons/oca_partner-contact/partner_contact_zip_autofill/models/res_config_settings.py:0
+#: code:addons/partner_contact_zip_autofill/models/res_config_settings.py:0
+msgid "Imported %(count)s %(code)s postal-code entries."
+msgstr "%(count)s %(code)s-Postleitzahleinträge importiert."
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__municipality_code
+msgid "Municipality Code"
+msgstr "Gemeindekennziffer"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,help:partner_contact_zip_autofill.field_country_zip_city__municipality_code
+msgid ""
+"RegionalKey/AGS (DE). Used to map an OpenPLZ result back onto a directory "
+"row. Empty for Austria."
+msgstr ""
+"RegionalKey/AGS (DE). Wird verwendet, um ein OpenPLZ-Ergebnis einer "
+"Verzeichniszeile zuzuordnen. Für Österreich leer."
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__state_id
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.country_zip_city_view_search
+msgid "State"
+msgstr "Bundesland"
+
+#. module: partner_contact_zip_autofill
+#. odoo-python
+#: code:addons/oca_partner-contact/partner_contact_zip_autofill/models/country_zip_city.py:0
+#: code:addons/partner_contact_zip_autofill/models/country_zip_city.py:0
+msgid "Unsupported ZIP directory country %s."
+msgstr "Nicht unterstütztes PLZ-Verzeichnisland %s."
+
+#. module: partner_contact_zip_autofill
+#: model_terms:ir.ui.view,arch_db:partner_contact_zip_autofill.country_zip_city_view_search
+msgid "ZIP"
+msgstr "PLZ"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.actions.act_window,name:partner_contact_zip_autofill.country_zip_city_action
+#: model:ir.ui.menu,name:partner_contact_zip_autofill.country_zip_city_menu
+msgid "ZIP Directory"
+msgstr "PLZ-Verzeichnis"
+
+#. module: partner_contact_zip_autofill
+#: model:ir.model.fields,field_description:partner_contact_zip_autofill.field_country_zip_city__zip
+msgid "Zip"
+msgstr "PLZ"
