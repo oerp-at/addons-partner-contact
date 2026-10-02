@@ -107,8 +107,8 @@ class ResPartnerRelation(models.Model):
         self._compute_right_partner_id_domain()
         result = {
             "domain": {
-                "left_partner_id": self.left_partner_id_domain,
-                "right_partner_id": self.right_partner_id_domain,
+                "left_partner_id": self.left_partner_id_domain or [],
+                "right_partner_id": self.right_partner_id_domain or [],
             }
         }
         # Check wether domain results in no choice or wrong choice of partners:
@@ -130,7 +130,7 @@ class ResPartnerRelation(models.Model):
         """Check wether partner_domain results in empty selection
         for partner, or wrong selection of partner already selected.
         """
-        test_domain = [] if not partner_domain else Domain(partner_domain)
+        test_domain = Domain(partner_domain or [])
         if partner:
             test_domain &= Domain("id", "=", partner.id)
         Partner = self.env["res.partner"]
