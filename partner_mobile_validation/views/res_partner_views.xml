@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copyright 2025 Akretion France (https://www.akretion.com/)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <!-- Load the mobile companion fields so the phone widget can display the
+         INTERNATIONAL format and dial the E164 number, like for phone. -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet//field[@name='mobile']" position="before">
+                <field name="mobile_sanitized" invisible="1" />
+                <field name="mobile_formatted" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='child_ids']/form/sheet//field[@name='mobile']"
+                position="before"
+            >
+                <field name="mobile_sanitized" invisible="1" />
+                <field name="mobile_formatted" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_simple_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_simple_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="before">
+                <field name="mobile_sanitized" invisible="1" />
+                <field name="mobile_formatted" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="before">
+                <field name="mobile_sanitized" column_invisible="1" />
+                <field name="mobile_formatted" column_invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="widget">phone</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_kanban_view" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="mobile_sanitized" />
+                <field name="mobile_formatted" />
+            </xpath>
+            <xpath expr="//templates//field[@name='mobile']" position="attributes">
+                <attribute name="widget">phone</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

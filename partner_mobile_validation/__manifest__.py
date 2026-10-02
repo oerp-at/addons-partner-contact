@@ -4,7 +4,7 @@
 
 {
     "name": "Partner Mobile Validation",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Extra Tools",
     "license": "AGPL-3",
     "summary": "Glue module between partner_mobile and phone_validation",
@@ -13,6 +13,7 @@
     "development_status": "Beta",
     "website": "https://github.com/OCA/partner-contact",
     "depends": ["partner_mobile", "phone_validation"],
+    "data": ["views/res_partner_views.xml"],
     "installable": True,
     "auto_install": True,
 }
