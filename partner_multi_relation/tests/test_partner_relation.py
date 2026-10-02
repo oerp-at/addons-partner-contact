@@ -236,8 +236,8 @@ class TestPartnerRelation(TestPartnerRelationCommon):
         relation = self.company2person_relation
         result = relation._onchange_type_id()
         domain = self._get_domain_from_logged_result(result)
-        self.assertTrue(("is_company", "=", True) in domain["left_partner_id"])
-        self.assertTrue(("is_company", "=", False) in domain["right_partner_id"])
+        self.assertIn(["is_company", "=", True], domain["left_partner_id"])
+        self.assertIn(["is_company", "=", False], domain["right_partner_id"])
 
     def test_onchange_type_id_needing_categories(self):
         """Test on_change_type_id with relation needing categories."""
@@ -252,12 +252,12 @@ class TestPartnerRelation(TestPartnerRelationCommon):
         )
         result = relation_ngo_volunteer._onchange_type_id()
         domain = self._get_domain_from_logged_result(result)
-        self.assertTrue(
-            ("category_id", "=", self.category_01_ngo.id) in domain["left_partner_id"]
+        self.assertIn(
+            ["category_id", "=", self.category_01_ngo.id], domain["left_partner_id"]
         )
-        self.assertTrue(
-            ("category_id", "=", self.category_02_volunteer.id)
-            in domain["right_partner_id"]
+        self.assertIn(
+            ["category_id", "=", self.category_02_volunteer.id],
+            domain["right_partner_id"],
         )
 
     def test_search_any_partner(self):
@@ -299,7 +299,7 @@ class TestPartnerRelation(TestPartnerRelationCommon):
         # 2. Test call with company 2 person relation
         relation = self.company2person_relation
         domain = relation._onchange_partner()["domain"]
-        self.assertTrue(("left_partner_type", "=", "c") in domain["type_id"])
+        self.assertIn(["left_partner_type", "=", "c"], domain["type_id"])
         # 3. Test with invalid or impossible combinations
         relation_nobody = self._get_empty_relation()
         relation_nobody.left_partner_id = self.partner_02_company

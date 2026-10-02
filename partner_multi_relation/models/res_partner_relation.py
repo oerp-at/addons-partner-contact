@@ -182,6 +182,11 @@ class ResPartnerRelation(models.Model):
             ),
         }
 
+    @api.model
+    def _domain_to_json(self, domain):
+        """Return domain as JSON value for a domain field, [] when it is empty."""
+        return [] if domain.is_true() else list(domain)
+
     @api.depends("type_id")
     def _compute_left_partner_id_domain(self):
         """Set domain based mainly on type_id restrictions."""
@@ -195,7 +200,7 @@ class ResPartnerRelation(models.Model):
                 category_id = this.type_id.left_partner_category_id
                 if category_id:
                     domain &= Domain("category_id", "=", category_id.id)
-            this.left_partner_id_domain = list(domain)
+            this.left_partner_id_domain = this._domain_to_json(domain)
 
     @api.depends("type_id")
     def _compute_right_partner_id_domain(self):
@@ -210,13 +215,13 @@ class ResPartnerRelation(models.Model):
                 category_id = this.type_id.right_partner_category_id
                 if category_id:
                     domain &= Domain("category_id", "=", category_id.id)
-            this.right_partner_id_domain = list(domain)
+            this.right_partner_id_domain = this._domain_to_json(domain)
 
     @api.depends("left_partner_id", "right_partner_id")
     def _compute_type_id_domain(self):
         """Set domain based on left and right partner."""
         for this in self:
-            domain = Domain([])
+            domain = []
             left_partner = this.left_partner_id
             if left_partner:
                 partner_type = "c" if left_partner.is_company else "p"
@@ -239,7 +244,7 @@ class ResPartnerRelation(models.Model):
                     ("right_partner_category_id", "=", False),
                     ("right_partner_category_id", "in", right_partner.category_id.ids),
                 ]
-            this.type_id_domain = list(domain)
+            this.type_id_domain = domain
 
     @api.depends(
         "left_partner_id.name",
