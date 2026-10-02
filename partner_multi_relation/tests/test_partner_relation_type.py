@@ -101,7 +101,7 @@ class TestPartnerRelationType(TestPartnerRelationCommon):
         partner_peoples_will = self.Partner.create(
             {
                 "name": "People's Will",
-                "is_company": True,
+                "vat": "BE0477472701",
                 "ref": "PPLWIL",
                 "category_id": [(4, category_party.id)],
             }

@@ -77,7 +77,7 @@ class TestPartnerSearch(TestPartnerRelationCommon):
         tomorrow = today + one_day
         day_after_tomorrow = tomorrow + one_day
         great_company = self.Partner.create(
-            {"name": "Great Company", "is_company": True, "ref": "GRTCOM"}
+            {"name": "Great Company", "vat": "BE0477472701", "ref": "GRTCOM"}
         )
         hard_working_person = self.Partner.create(
             {"name": "Hard Working Person", "is_company": False, "ref": "HRDWRK"}
