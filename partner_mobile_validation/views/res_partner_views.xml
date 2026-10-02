@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
   Copyright 2025 Akretion France (https://www.akretion.com/)
+  Copyright 2026 Weboffice IT und Marketing GmbH & CoKG
   License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-    <!-- Load the mobile companion fields so the phone widget can display the
-         INTERNATIONAL format and dial the E164 number, like for phone. -->
+    <!-- Load the companion fields so the phone widget can display the
+         INTERNATIONAL format and dial the E164 number. phone_formatted and
+         phone_sanitized hold the first valid number of mobile/phone, so the
+         phone widget of phone uses its own companion fields instead. -->
     <record id="view_partner_form" model="ir.ui.view">
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
+            <xpath
+                expr="/form/sheet//field[@name='phone'][@widget='phone']"
+                position="before"
+            >
+                <field name="phone_own_sanitized" invisible="1" />
+                <field name="phone_own_formatted" invisible="1" />
+            </xpath>
+            <xpath
+                expr="/form/sheet//field[@name='phone'][@widget='phone']"
+                position="attributes"
+            >
+                <attribute
+                    name="options"
+                >{'formatted_field': 'phone_own_formatted', 'dial_field': 'phone_own_sanitized'}</attribute>
+            </xpath>
             <xpath expr="/form/sheet//field[@name='mobile']" position="before">
                 <field name="mobile_sanitized" invisible="1" />
                 <field name="mobile_formatted" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='child_ids']/form/sheet//field[@name='phone'][@widget='phone']"
+                position="before"
+            >
+                <field name="phone_own_sanitized" invisible="1" />
+                <field name="phone_own_formatted" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='child_ids']/form/sheet//field[@name='phone'][@widget='phone']"
+                position="attributes"
+            >
+                <attribute
+                    name="options"
+                >{'formatted_field': 'phone_own_formatted', 'dial_field': 'phone_own_sanitized'}</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='child_ids']/form/sheet//field[@name='mobile']"
@@ -28,6 +61,15 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_simple_form" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone'][@widget='phone']" position="before">
+                <field name="phone_own_sanitized" invisible="1" />
+                <field name="phone_own_formatted" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='phone'][@widget='phone']" position="attributes">
+                <attribute
+                    name="options"
+                >{'enable_sms': false, 'formatted_field': 'phone_own_formatted', 'dial_field': 'phone_own_sanitized'}</attribute>
+            </xpath>
             <xpath expr="//field[@name='mobile']" position="before">
                 <field name="mobile_sanitized" invisible="1" />
                 <field name="mobile_formatted" invisible="1" />
@@ -39,6 +81,15 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="before">
+                <field name="phone_own_sanitized" column_invisible="1" />
+                <field name="phone_own_formatted" column_invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute
+                    name="options"
+                >{'formatted_field': 'phone_own_formatted', 'dial_field': 'phone_own_sanitized'}</attribute>
+            </xpath>
             <xpath expr="//field[@name='mobile']" position="before">
                 <field name="mobile_sanitized" column_invisible="1" />
                 <field name="mobile_formatted" column_invisible="1" />
@@ -54,8 +105,15 @@
         <field name="inherit_id" ref="base.res_partner_kanban_view" />
         <field name="arch" type="xml">
             <xpath expr="//templates" position="before">
+                <field name="phone_own_sanitized" />
+                <field name="phone_own_formatted" />
                 <field name="mobile_sanitized" />
                 <field name="mobile_formatted" />
+            </xpath>
+            <xpath expr="//templates//field[@name='phone']" position="attributes">
+                <attribute
+                    name="options"
+                >{'formatted_field': 'phone_own_formatted', 'dial_field': 'phone_own_sanitized'}</attribute>
             </xpath>
             <xpath expr="//templates//field[@name='mobile']" position="attributes">
                 <attribute name="widget">phone</attribute>
