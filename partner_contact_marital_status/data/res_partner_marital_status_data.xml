@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026, Weboffice IT-Service und Marketing GmbH & Co KG -->
+<odoo noupdate="1">
+    <record id="res_partner_marital_status_single" model="res.partner.marital.status">
+        <field name="name">Single</field>
+    </record>
+    <record id="res_partner_marital_status_married" model="res.partner.marital.status">
+        <field name="name">Married</field>
+    </record>
+    <record id="res_partner_marital_status_divorced" model="res.partner.marital.status">
+        <field name="name">Divorced</field>
+    </record>
+    <record id="res_partner_marital_status_widowed" model="res.partner.marital.status">
+        <field name="name">Widowed</field>
+    </record>
+</odoo>
