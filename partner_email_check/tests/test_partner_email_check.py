@@ -3,6 +3,7 @@
 
 
 from odoo.exceptions import UserError, ValidationError
+from odoo.tests import Form
 from odoo.tests.common import TransactionCase
 
 
@@ -121,3 +122,13 @@ class TestPartnerEmailCheck(TransactionCase):
         self.env.company.partner_email_check_syntax = False
         self.test_partner.email = "bad@email@domain..com"
         self.assertTrue(self.test_partner.email)
+
+    def test_settings_form(self):
+        """The settings block renders and writes the company flags."""
+        self.env.company.partner_email_check_syntax = False
+        with Form(self.env["res.config.settings"]) as settings:
+            settings.partner_email_check_check_deliverability = True
+            self.assertTrue(settings.partner_email_check_syntax)
+            settings.partner_email_check_filter_duplicates = True
+        self.assertTrue(self.env.company.partner_email_check_check_deliverability)
+        self.assertTrue(self.env.company.partner_email_check_filter_duplicates)
