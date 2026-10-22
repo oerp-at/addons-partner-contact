@@ -3,10 +3,10 @@
 
 """Test default values for models."""
 
-from odoo.tests import TransactionCase
+from .base import DefaultNamesOrderCase
 
 
-class PersonCase(TransactionCase):
+class PersonCase(DefaultNamesOrderCase):
     """Test ``res.partner`` when it is a person."""
 
     context = {"default_is_company": False}  # noqa: RUF012

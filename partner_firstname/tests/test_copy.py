@@ -1,12 +1,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 """Test copy function for models."""
 
-from odoo.tests import TransactionCase
-
-from .base import MailInstalled
+from .base import DefaultNamesOrderCase, MailInstalled
 
 
-class UserCase(TransactionCase, MailInstalled):
+class UserCase(DefaultNamesOrderCase, MailInstalled):
     """Test ``res.users``."""
 
     def setUp(self):
