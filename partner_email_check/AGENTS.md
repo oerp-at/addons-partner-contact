@@ -28,3 +28,5 @@ Settings > Email validation).
 - The checks follow `self.env.company`, not the partner's company.
 - Deliverability needs DNS; in offline test or import runs keep it off.
 - Imports with invalid addresses fail with a `ValidationError` while syntax check is on.
+- German: the wording of Himmelblau (#13971, e.g. "Schreibweise von E-Mail-Adressen
+  prüfen"); Weblate updates of `de.po` should keep it.
