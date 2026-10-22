@@ -13,7 +13,23 @@ class MailInstalled:
         )
 
 
-class BaseCase(TransactionCase, MailInstalled):
+class DefaultNamesOrderCase(TransactionCase):
+    """Run the tests with the module default names order.
+
+    The expected names assume ``_partner_names_order_default``; a database can
+    have another ``partner_names_order`` configured.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env["ir.config_parameter"].sudo().set_str(
+            "partner_names_order",
+            cls.env["res.config.settings"]._partner_names_order_default(),
+        )
+
+
+class BaseCase(DefaultNamesOrderCase, MailInstalled):
     def setUp(self):
         super().setUp()
         self.check_fields = True

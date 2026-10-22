@@ -6,12 +6,11 @@
 To have more accurate results, remove the ``mail`` module before testing.
 """
 
-from odoo.tests import TransactionCase
-
 from .. import exceptions as ex
+from .base import DefaultNamesOrderCase
 
 
-class CompanyCase(TransactionCase):
+class CompanyCase(DefaultNamesOrderCase):
     """Test ``res.partner`` when it is a company."""
 
     model = "res.partner"
@@ -41,7 +40,7 @@ class PersonCase(CompanyCase):
     context = {"default_is_company": False, "default_type": "contact"}  # noqa: RUF012
 
 
-class AddressCase(TransactionCase):
+class AddressCase(DefaultNamesOrderCase):
     """Test ``res.partner`` when it is a address."""
 
     def test_new_empty_invoice_address(self):

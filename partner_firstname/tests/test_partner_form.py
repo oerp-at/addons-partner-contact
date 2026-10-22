@@ -6,12 +6,13 @@
 The form operates in onchange mode, with its limitations.
 """
 
-from odoo.tests import Form, TransactionCase
+from odoo.tests import Form
 
 from ..exceptions import EmptyNamesError
+from .base import DefaultNamesOrderCase
 
 
-class PartnerCompanyCase(TransactionCase):
+class PartnerCompanyCase(DefaultNamesOrderCase):
     is_company = True
 
     def test_create_from_form(self):
@@ -77,7 +78,7 @@ class PartnerCompanyCase(TransactionCase):
             # self.assertEqual(partner_form.lastname, name)
 
 
-class PartnerContactCase(TransactionCase):
+class PartnerContactCase(DefaultNamesOrderCase):
     is_company = False
 
     def test_create_from_form_only_firstname(self):
