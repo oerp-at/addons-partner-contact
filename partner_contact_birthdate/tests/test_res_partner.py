@@ -4,6 +4,7 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo import fields
+from odoo.exceptions import ValidationError
 from odoo.tests import common
 
 
@@ -19,3 +20,14 @@ class TestResPartner(common.TransactionCase):
             fields.Date.today(), self.partner_admin.birthdate_date
         ).years
         self.assertEqual(self.partner_admin.age, age)
+
+    def test_birthdate_in_future(self):
+        today = fields.Date.context_today(self.partner_admin)
+        with self.assertRaises(ValidationError):
+            self.partner_admin.birthdate_date = today + relativedelta(days=1)
+        with self.assertRaises(ValidationError):
+            self.env["res.partner"].create(
+                {"name": "Future", "birthdate_date": today + relativedelta(years=1)}
+            )
+        self.partner_admin.birthdate_date = today
+        self.assertEqual(self.partner_admin.birthdate_date, today)
