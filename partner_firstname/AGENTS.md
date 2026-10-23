@@ -36,5 +36,6 @@ full name is kept in `lastname`.
 - 20.0: `ir.config_parameter.get_param/set_param` are gone, use `get_str`/`set_str` (or
   `get_bool`, `get_int`, ...).
 - Form tests must set a VAT to get a company (`partner_form.vat = "BE0477472701"`).
-- Tests run with the module default names order (`tests/base.py` `DefaultNamesOrderCase`):
-  a database can have another `partner_names_order` (e.g. `last_first`).
+- Tests run with the module default names order (`tests/base.py`
+  `DefaultNamesOrderCase`): a database can have another `partner_names_order` (e.g.
+  `last_first`).
