@@ -36,5 +36,11 @@ msgstr "Geburtsdatum"
 msgid "Contact"
 msgstr "Kontakt"
 
+#. module: partner_contact_birthdate
+#. odoo-python
+#: code:addons/partner_contact_birthdate/models/res_partner.py:0
+msgid "The birthdate cannot be in the future."
+msgstr "Das Geburtsdatum darf nicht in der Zukunft liegen."
+
 #~ msgid "Partner"
 #~ msgstr "Partner"

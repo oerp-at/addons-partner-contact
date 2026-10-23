@@ -6,6 +6,7 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ResPartner(models.Model):
@@ -23,3 +24,12 @@ class ResPartner(models.Model):
             if record.birthdate_date:
                 age = relativedelta(fields.Date.today(), record.birthdate_date).years
             record.age = age
+
+    @api.constrains("birthdate_date")
+    def _check_birthdate_not_in_future(self):
+        today = fields.Date.context_today(self)
+        for record in self:
+            if record.birthdate_date and record.birthdate_date > today:
+                raise ValidationError(
+                    self.env._("The birthdate cannot be in the future.")
+                )
