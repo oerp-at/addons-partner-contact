@@ -17,4 +17,4 @@ Adds the marital status of persons to the _Personal Information_ page of contact
 
 ## Pitfalls
 
-- Licensed AGPL-3 since 20.0 (was OPL-1 in the Himmelblau 19.0 repository).
+- Licensed AGPL-3 since 20.0 (was OPL-1 in a 19.0 customer repository).
