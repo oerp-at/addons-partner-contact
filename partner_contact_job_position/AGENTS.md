@@ -15,5 +15,5 @@ text field `function`.
 
 - 20.0: `is_company` is computed from the VAT; with `partner_company_manual` it follows
   the person/company toggle again.
-- Himmelblau renames the labels "Job position" to "Job"; that wording belongs in a
-  Himmelblau module or translation, not in this module.
+- Customer-specific labels (e.g. "Job" instead of "Job position") belong in a customer
+  module or translation, not in this module.
